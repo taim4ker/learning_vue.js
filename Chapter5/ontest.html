@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charaset="UTF-8">
+		<title>Vue.js sample</title>
+		<!-- <linl rel="stylesheet" href="style.css"> -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+
+	<body>
+		<h1>Chapter5</h1>
+
+		<h2>クリックしたら１増やす</h2>
+		<div id="app">
+      <p>{{ count }}</p>
+      <button v-on:click="countUp">１増やす</button>
+    </div>
+    
+    <h2>クリックしたら、２回目は押せなくなる「いいね」ボタンの例</h2>
+		<div id="app2">
+      <p>{{ count }}</p>
+      <button value="いいね" v-bind:disabled="isClick" v-on:click="oneClick">いいね</button>
+    </div>
+    
+    <h2>クリックしたら、値をいろいろ増やすボタンの例</h2>
+		<div id="app3">
+      <p>{{ count }}</p>
+      <button v-on:click="countUp(3)">３増やす</button>
+      <button v-on:click="countUp(10)">１０増やす</button>
+      <button v-on:click="countUp(100)">１００増やす</button>
+    </div>
+    
+    <h2>Enterキーを押したら、アラートを表示する例</h2>
+		<div id="app4">
+      <input v-on:keyup.enter="showAlert" v-model="myText">
+      <p>{{ myText }}</p>
+    </div>
+
+    <h2>Shift + Enterキーを押したら、アラートを表示する例</h2>
+		<div id="app5">
+      <input v-on:keyup.enter.shift="showAlert" v-model="myText">
+      <p>{{ myText }}</p>
+    </div>
+
+		<script>
+			new Vue({
+				el:'#app',
+				data:{
+					count:0,
+        },
+        methods:{
+          countUp: function(){
+            this.count += 1;
+          }
+        }
+      })
+      
+      function iine(){
+        alert("いいね");
+      }
+
+			new Vue({
+        el:'#app2',
+        data:{
+					isClick:false,
+        },
+				methods:{
+          oneClick: function(){
+            this.isClick = true;
+            iine();
+          }
+        }
+			})
+
+			new Vue({
+				el:'#app3',
+				data:{
+					count: 0,
+        },
+        methods:{
+          countUp: function(value){
+            this.count += value;
+          }
+        }
+      })
+
+			new Vue({
+				el:'#app4',
+				data:{
+					myText: 'Hello!',
+        },
+        methods:{
+          showAlert:function(){
+            alert("Enterキーを押しました");
+          }
+        }
+			})
+
+      new Vue({
+				el:'#app5',
+				data:{
+					myText: 'Hello!',
+        },
+        methods:{
+          showAlert:function(){
+            alert("Shift + Enterキーを押しました");
+          }
+        }
+			})
+
+			new Vue({
+				el:'#app6',
+				data:{
+					picked: 'red',
+				}
+			})
+		</script>
+	</body>
+</html>

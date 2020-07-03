@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charaset="UTF-8">
+		<title>Vue.js sample</title>
+		<!-- <linl rel="stylesheet" href="style.css"> -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+
+	<body>
+		<h1>Chapter4</h1>
+
+		<h2>入力した文字列を表示</h2>
+		<div id="app">
+      <input v-model="myName" placeholder="お名前">
+			<p>私は、{{ myName }}です</p>
+		</div>
+
+		<h2>入力した文章と文字数を表示</h2>
+		<div id="app2">
+      <textarea v-model="myText"></textarea>
+			<p>文章は、{{ myText }}</p>
+			<p>{{ myText.length }}文字</p>
+		</div>
+
+		<h2>チェックボックスのON/OFFを調べる例</h2>
+		<div id="app3">
+      <label><input type="checkbox" v-model="myCheck">
+			チェックボックスは、{{ myCheck }}</label>
+		</div>
+
+		<h2>複数のチェックボックスのON/OFFを調べる例</h2>
+		<div id="app4">
+			<label><input type="checkbox" value="red" v-model="myChecks">赤</label><br>
+			<label><input type="checkbox" value="green" v-model="myChecks">緑</label><br>
+			<label><input type="checkbox" value="blue" v-model="myChecks">青</label><br>
+
+			選択したのは{{ myChecks }}
+		</div>
+
+		<h2>ボタンの有効無効をデータで指定する</h2>
+		<div id="app5">
+      <label><input type="checkbox" v-model="myAgree">
+			同意します </label>
+
+			<button v-bind:disabled="myAgree==false">送信</button>
+		</div>
+
+		<h2>選択したラジオボタンを表示する</h2>
+		<div id="app6">
+			<label><input type="radio" value="red" v-model="picked">赤</label><br>
+			<label><input type="radio" value="green" v-model="picked">緑</label><br>
+			<label><input type="radio" value="blue" v-model="picked">青</label><br>
+
+			{{ picked }}を選択
+		</div>
+
+		<h2>画像の表示をラジオボタンで切り替える</h2>
+		<div id="app7">
+			<label><input type="radio" value="../images/orange.png" v-model="fileName">オレンジ</label><br>
+			<label><input type="radio" value="../images/lemon.png" v-model="fileName">レモン</label><br>
+
+			{{ fileName }}を選択
+			<img v-bind:src="fileName" v-bind:style="styleObj"></img>
+		</div>
+
+		<h2>単体選択の値をVueインスタンスのデータと繋ぐ</h2>
+		<div id="app8">
+			<select v-model='myColor'>
+				<option disabled value="">色を選択してください</option>
+				<option>red</option>
+				<option>green</option>
+				<option>blue</option>
+				<option>orange</option>
+				<option>brown</option>
+			</select>
+			<p v-bind:style="{color:myColor}">選んだのは{{ myColor }}です</p>
+		</div>
+
+		<h2>複数選択の値をVueインスタンスのデータと繋ぐ</h2>
+		<div id="app9">
+			<select v-model='myColors' multiple style="width:150px">
+				<option>red</option>
+				<option>green</option>
+				<option>blue</option>
+				<option>orange</option>
+				<option>brown</option>
+			</select>
+			<p v-bind:style="{color:myColor}">選んだのは{{ myColors }}です</p>
+		</div>
+
+		<script>
+			new Vue({
+				el:'#app',
+				data:{
+					myName:'',
+				}
+			})
+
+			new Vue({
+				el:'#app2',
+				data:{
+					myText:'今日はきっといい天気',
+				}
+			})
+
+			new Vue({
+				el:'#app3',
+				data:{
+					myCheck: false,
+				}
+			})
+
+			new Vue({
+				el:'#app4',
+				data:{
+					myChecks: [],
+				}
+			})
+
+			new Vue({
+				el:'#app5',
+				data:{
+					myAgree: false,
+				}
+			})
+
+			new Vue({
+				el:'#app6',
+				data:{
+					picked: 'red',
+				}
+			})
+
+			new Vue({
+				el:'#app7',
+				data:{
+					fileName: '',
+					styleObj: {
+						width: '100px',
+					},
+				}
+			})
+
+			new Vue({
+				el:'#app8',
+				data:{
+					myColor: '',
+				}
+			})
+
+			new Vue({
+				el:'#app9',
+				data:{
+					myColors: [],
+				}
+			})
+		</script>
+	</body>
+</html>
