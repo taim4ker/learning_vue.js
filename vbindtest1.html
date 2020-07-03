@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charaset="UTF-8">
+		<title>Vue.js sample</title>
+		<!-- <linl rel="stylesheet" href="style.css"> -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+
+	<body>
+		<h2>URLの設定</h2>
+		<div id="app">
+      <a v-bind:href="myURL">Vue.js</a>
+		</div>
+
+		<h2>alignの設定</h2>
+		<div id="app2">
+			<p v-bind:align="myAlign">右寄せをv-bindsで指定</p>
+		</div>
+
+		<h2>インラインスタイルの設定</h2>
+		<div id="app3">
+			<p v-bind:style="{color:myColor}">文字色をv-bindで指定</p>
+			<p v-bind:style="{fontSize:mySize}">フォントスタイルをv-bindで指定</p>
+			<p v-bind:style="{backgroundColor:myBackColor}">背景色をv-bindで指定</p>
+		</div>
+
+		<h2>クラスを指定する例</h2>
+		<div id="app4">
+			<p v-bind:class="myClass">v-bindでクラス指定</p>
+			<p v-bind:class="[myClass, darkClass]">v-bindで複数クラス指定</p>
+			<p v-bind:class="{'strike-through': isON}">データでクラスをON/OFF</p>
+		</div>
+
+		<style>
+			.strike-through {
+				text-decoration:line-through;
+				color:lightgray
+			}
+			.dark {
+				background-color: gray;
+			}
+
+
+		</style>
+		<script>
+			new Vue({
+				el:'#app',
+				data:{
+					myURL:'https://jp.vuejs.org/v2/guide/',
+				}
+			})
+
+			new Vue({
+				el:'#app2',
+				data:{
+					myAlign:'right'
+				}
+			})
+
+			new Vue({
+				el:'#app3',
+				data:{
+					myColor:'red',
+					mySize:'200%',
+					myBackColor:'aqua'
+				}
+			})
+
+			new Vue({
+				el:'#app4',
+				data:{
+					myClass:'strike-through',
+					darkClass:'dark',
+					isON: true
+				}
+			})
+		</script>
+	</body>
+</html>

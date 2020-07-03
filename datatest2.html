@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charaset="UTF-8">
+		<title>Vue.js sample</title>
+		<!-- <linl rel="stylesheet" href="style.css"> -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+
+	<body>
+		<h2>JavaScriptの式を使って加工</h2>
+		<div id="app">
+      <p>{{ myPrice*1.08 }}</p>
+			<p>{{ "こんにちは" + myName + "さん" }}</p>
+			<p>{{ myName.substr(0, 1) }}</p>
+			<p>{{ myArray }}</p>
+			<p>{{ myArray[0] }}</p>
+			<p>{{ myTea }}</p>
+			<p>{{ myTea["name"] }} ¥{{ myTea["price"] }}</p>
+
+			<hr>
+			{{ $data }}
+			<hr>
+			<li v-for="(item, key) in $data">{{ key }} : {{ item }} </li>
+		</div>
+
+		<script>
+			new Vue({
+				el:"#app",
+				data:{
+					myPrice:500,
+					myName:'清水川',
+					myArray:[ 'りんご', 'みかん', 'レモン'],
+					myTea:{"name":"ダージリン", "price":600}
+				}
+			})
+		</script>
+	</body>
+</html>

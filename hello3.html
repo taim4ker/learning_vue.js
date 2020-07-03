@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charaset="UTF-8">
+		<title>Vue.js sample</title>
+		<!-- <linl rel="stylesheet" href="style.css"> -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+
+	<body>
+		<h2>データを表示するだけ</h2>
+		<div id="app">
+      <p> {{mytext}}</p>
+      <p v-text="mytext"></p>
+      <p v-html="mytext"></p>
+		</div>
+
+		<script>
+			new Vue({
+				el:"#app",
+				data:{
+					mytext:'<h1>Hello</h1>'
+				}
+			})
+		</script>
+	</body>
+</html>

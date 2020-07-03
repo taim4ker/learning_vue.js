@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charaset="UTF-8">
+		<title>Vue.js sample</title>
+		<!-- <linl rel="stylesheet" href="style.css"> -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+
+	<body>
+		<h2>JavaScriptの式を使って加工</h2>
+		<div id="app">
+			<p>{{ myTea }}</p>
+			<p>{{ myTea[0]["name"] }} ¥{{ myTea[0]["price"] }}</p>
+		</div>
+
+		<script>
+			var teaList = [
+				{ name:"コーヒー", price:300} ,
+				{ name:"フラペチーノ", price:500 },
+				{ name:"アイスティー", price:300 }
+			]
+			new Vue({
+				el:"#app",
+				data:{
+					myTea:teaList
+				}
+			})
+		</script>
+	</body>
+</html>
