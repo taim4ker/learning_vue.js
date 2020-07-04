@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charaset="UTF-8">
+		<title>Vue.js sample</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+
+	<body>
+		<h1>Chapter6</h1>
+
+		<h2>配列データを表示する例</h2>
+		<div id="app">
+      <ul>
+        <li v-for="item in myArray">{{ item }}</li>
+      </ul>
+    </div>
+    
+    <h2>オブジェクト配列データを表示する例</h2>
+		<div id="app2">
+      <ul>
+        <li v-for="item in objArray">{{ item.name }} ¥{{ item.price }}</li>
+      </ul>
+		</div>
+
+		<h2>1×5〜10×5を繰り返し表示する</h2>
+		<div id="app3">
+      <ul>
+        <li v-for="n in 10">{{ n }}×5 ={{ n*5 }} </li>
+      </ul>
+		</div>
+    
+    <h2>配列データを番号つきリストで表示する</h2>
+		<div id="app4">
+			<ul>
+        <li v-for="(item, index) in myArray">{{ index }}:{{ item }}</li>
+      </ul>
+    </div>
+    
+    <h2>ボタンでリストの追加削除を行う</h2>
+		<div id="app5">
+			<ul>
+        <li v-for="item in myArray">{{ item }}</li>
+      </ul>
+      <button v-on:click="addLast">末尾に追加</button><br>
+      <button v-on:click="addObj(3)">４つ目に追加</button><br>
+      <button v-on:click="changeObj(0)">１つ目を変更</button><br>
+      <button v-on:click="deleteObj(1)">２つ目を削除</button><br>
+		</div>
+
+		<script>
+			new Vue({
+				el:'#app',
+				data:{
+					myArray:['ジャムパン', 'いちごパン', 'あんぱん'],
+				}
+			})
+
+			new Vue({
+				el:'#app2',
+				data:{
+					objArray:[
+            {name: 'ジャムパン', price:100 },
+            {name: 'いちごパン', price:200 },
+            {name: 'あんぱん', price:300 }
+          ],
+				}
+			})
+
+			new Vue({
+				el:'#app3', // dataやmethodは必要ないが、v-forを使うためVue インスタンスは必要
+			})
+
+			new Vue({
+				el:'#app4',
+				data:{
+					myArray:['ジャムパン', 'いちごパン', 'あんぱん'],
+				}
+      })
+      
+      new Vue({
+				el:'#app5',
+				data:{
+					myArray:['1つ目', '２つ目', '３つ目', '４つ目', '５つ目'],
+        },
+        methods:{
+          addLast: function(){
+            this.myArray.push('[末尾に追加]')
+          },
+          addObj: function(index){
+            this.myArray.splice(index, 0,'[追加]')
+          },
+          changeObj: function(index){
+            this.myArray.splice(index, 1,'[変更]')
+          },
+          deleteObj: function(index){
+            this.myArray.splice(index, 1)
+          }
+        }
+			})
+		</script>
+	</body>
+</html>

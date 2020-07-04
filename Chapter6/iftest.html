@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charaset="UTF-8">
+		<title>Vue.js sample</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+
+	<body>
+		<h1>Chapter6</h1>
+
+		<h2>入力した文字列を表示</h2>
+		<div id="app">
+      <input type="checkbox" v-model="myVisible">
+			<p v-if="myVisible">チェックボックスはON</p>
+		</div>
+
+		<h2>true/falseで表示を切り替える</h2>
+		<div id="app2">
+      <input type="checkbox" v-model="myVisible">
+			<p v-if="myVisible">チェックボックスはON</p>
+			<p v-else="myVisible">チェックボックスはOFF</p>
+		</div>
+
+		<h2>クリックしたら「いいね」ボタンが消える</h2>
+		<div id="app3">
+			<button v-if="isShow" v-on:click="iine">いいね</button>
+		</div>
+
+		<script>
+			new Vue({
+				el:'#app',
+				data:{
+					myVisible:false,
+				}
+			})
+
+			new Vue({
+				el:'#app2',
+				data:{
+					myVisible:false,
+				}
+			})
+
+			new Vue({
+				el:'#app3',
+				data:{
+					isShow: true
+				},
+				methods:{
+					iine: function() {
+						this.isShow = false
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
