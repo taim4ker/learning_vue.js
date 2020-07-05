@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charaset="UTF-8">
+		<title>Vue.js sample</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.0/marked.min.js"></script>
+	</head>
+
+	<body>
+		<h1>Chapter9</h1>
+
+    <h2>あ</h2>
+		<div id="app">
+      <textarea　v-model="input"></textarea>
+      <div v-html="convertMarkdown"></div>
+    </div>
+
+		<script>
+      new Vue({
+        el: '#app',
+        data: {
+          input: '# タイトル'
+        },
+        computed: {
+          // inputが変わったら、convertMarkdownを算出する
+          convertMarkdown: function() {
+            return marked(this.input);
+          }
+        }
+      });
+    </script>
+    
+	</body>
+</html>

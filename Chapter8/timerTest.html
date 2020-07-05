@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charaset="UTF-8">
+		<title>Vue.js sample</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	</head>
+
+	<body>
+    <h1>Chapter8</h1>
+    
+    <h2>残り秒数が０になったら、アラートを出す</h2>
+    <div id="app2">
+      <button onclick="startTimer()">START</button>
+    </div>
+
+		<script>
+      function startTimer(){
+        // 残り5秒
+        this.resetSec = 5;
+        //　タイマースタート。1秒ごとに、countDown()を実行
+        this.timerObj = setInterval(() => { countDown() }, 1000)
+      }
+      function countDown() {
+        // 1秒減らす
+        this.resetSec --;
+        // 0秒以下になったらアラート＆タイマー停止
+        if (this.resetSec <= 0) {
+          alert("制限時間です");
+          clearInterval(this.timeObj);
+        }
+      }
+    </script>
+  </body>
+</html>

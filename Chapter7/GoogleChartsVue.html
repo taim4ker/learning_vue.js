@@ -27,11 +27,10 @@
       // グラフを表示する関数
       function drawBasic(){
         var data = google.visualization.arrayToDataTable(orgdata);
-        console.log(data);
-        // var options = {title:'好きなランチ',"is3D":true};
+        var options = {title:'好きなランチ',"is3D":true};
         var chart = new google.visualization.PieChart(
           document.getElementById('chart_div'));
-          chart.draw(data);
+          chart.draw(data, options);
       }
     </script>
     
